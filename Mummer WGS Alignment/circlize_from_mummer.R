@@ -99,11 +99,11 @@ dev.off()
 
 #kar$chr
 
-write.table(mykar, file = 'ms_bs.karyotype', sep = '\t', quote = F, row.names = F)
+write.table(mykar, file = 'ms_bs.karyotype', sep = '\t', quote = F, row.names = F, col.names = F)
 newlinks <- cbind(ms_links, bs_links)
 #head(newlinks)
 
-write.table(mylinks, file = 'ms_bs_link.tsv', sep = '\t', quote = F, row.names = F)
+write.table(mylinks, file = 'ms_bs_link.tsv', sep = '\t', quote = F, row.names = F, col.names = F)
 
 #dos2unix ms_bs.karyotype
 #dos2unix ms_bs_link.tsv
