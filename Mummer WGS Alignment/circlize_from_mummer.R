@@ -55,6 +55,8 @@ head(kar)
 colnames(ms_links) <- c('chr', 'start', 'end')
 colnames(bs_links) <- c('chr', 'start', 'end')
 
+graphics.off()
+svg('links_with_circlize_ms_bs.svg', width = 6, height = 5)
 
 circos.clear()
 circos.par(gap.after = c(rep(1, 34), 5, rep(1, 35), 5))
@@ -79,6 +81,9 @@ highlight.chromosome(paste0("bs_chr", c(1:36)),
 #head(kar)
 circos.track(ylim =c(0.2,0.1))
 circos.genomicLink(ms_links, bs_links, col = rand_color(nrow(bs_links), transparency = 0.2), border = NA)
+circos.clear()
+dev.off()
+
 #kar$chr
 
 write.table(kar, file = 'ms_bs.karyotype', sep = '\t')
@@ -86,4 +91,3 @@ newlinks <- cbind(ms_links, bs_links)
 #head(newlinks)
 
 write.table(mylinks, file = 'ms_bs_link.tsv', sep = '\t')
-circos.clear()
