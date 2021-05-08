@@ -4,6 +4,19 @@ library(dplyr)
 setwd('D:/05.OneDrive/OneDrive - The University of Queensland/Black swan genome/CIRCLIZE/')
 kar <- read.table('chr.kar', header = F, sep = ' ')
 head(kar)
+kar_bs = kar[37:604,]
+kar_ms = kar[1:35,]
+head(kar_bs)
+head(kar_ms, 36)
+kar_bs$V6 <- as.numeric(kar_bs$V6)
+kar_bs =kar_bs[order(kar_bs$V6, decreasing = T),]
+kar_bs <- kar_bs[1:36,]
+kar_bs
+mykar <- rbind(kar_bs, kar_ms)
+mykar[,4] <- gsub('HiC_scaffold_', 'bs_chr', mykar[,4])
+mykar[,3] <- gsub('HiC_scaffold_', 'bs_chr', mykar[,3])
+mykar
+
 kar <- select(kar, 'V4', 'V5', 'V6', 'V7')
 head(kar)
 kar <- data.frame(lapply(kar, function(x){
@@ -86,8 +99,18 @@ dev.off()
 
 #kar$chr
 
-write.table(kar, file = 'ms_bs.karyotype', sep = '\t')
+write.table(mykar, file = 'ms_bs.karyotype', sep = '\t', quote = F, row.names = F)
 newlinks <- cbind(ms_links, bs_links)
 #head(newlinks)
 
-write.table(mylinks, file = 'ms_bs_link.tsv', sep = '\t')
+write.table(mylinks, file = 'ms_bs_link.tsv', sep = '\t', quote = F, row.names = F)
+
+#dos2unix ms_bs.karyotype
+#dos2unix ms_bs_link.tsv
+#mv ms_bs.karyotype new.chr.kar
+#mv ms_bs_link.tsv new.links.tsv
+#perl addCol.pl new.chr.kar new.links.tsv (ref: https://bioinf.cc/misc/2020/08/08/circos-ribbons.html) 
+
+
+
+
