@@ -1,0 +1,8 @@
+1.	Go to animal genome size database: http://www.genomesize.com/result_species.php?id=838
+2.	Go to the page and #12 of FAQ: http://www.genomesize.com/faq.php
+3.	Convert C-value into base pairs by (ex for Black swan [c-value=1.45pg] x 0.978 x 109 (ref: https://www.ncbi.nlm.nih.gov/pubmed/12541287)
+4.	Get the estimated size in base pairs
+
+__Ref:__
+Nakamura, D., T.R. Tiersch, M. Douglass, and R.W. Chandler (1990). Rapid identification of sex in birds by flow cytometry. Cytogenetics and Cell Genetics 53: 201-205.
+Tiersch, T.R. and S.S. Wachtel (1991). On the evolution of genome size of birds. Journal of Heredity 82: 363-368.
